@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDD_Projet_Jeux", "BDD_Projet_Jeux\BDD_Projet_Jeux.csproj", "{CFD3C817-FB6F-4949-82B9-31331BD9DEBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDD_Projet_Jeux_Tests", "BDD_Projet_Jeux_Tests\BDD_Projet_Jeux_Tests.csproj", "{7F5A6417-8B3F-4C4C-BBB7-7EC14D16D7DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFD3C817-FB6F-4949-82B9-31331BD9DEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD3C817-FB6F-4949-82B9-31331BD9DEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD3C817-FB6F-4949-82B9-31331BD9DEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD3C817-FB6F-4949-82B9-31331BD9DEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F5A6417-8B3F-4C4C-BBB7-7EC14D16D7DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5A6417-8B3F-4C4C-BBB7-7EC14D16D7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5A6417-8B3F-4C4C-BBB7-7EC14D16D7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5A6417-8B3F-4C4C-BBB7-7EC14D16D7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
