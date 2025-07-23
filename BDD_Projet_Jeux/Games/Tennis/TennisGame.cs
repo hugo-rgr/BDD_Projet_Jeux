@@ -67,27 +67,24 @@ namespace BDD_Projet_Jeux.Tennis
 
             var state = new GameState
             {
-                CurrentPlayer = "Joueur 1", // Tennis doesn't have turns in the same way
+                CurrentPlayer = "Joueur 1",
                 IsGameOver = _match.State == MatchState.Completed
             };
-
-            // Add player scores (sets won)
+            
             state.Players.Add("Joueur 1", _match.Player1.SetsWon);
             state.Players.Add("Joueur 2", _match.Player2.SetsWon);
 
             return state;
         }
-
-        // Expose the internal Match for backward compatibility with existing tests
+        
         public Match GetMatch()
         {
             return _match;
         }
 
-        // Helper methods for tests
+        // Méthodes auxiliaires pour les tests
         public void SetGameScore(string score)
         {
-            // Implementation for setting specific game scores for testing
             if (score.Contains("Égalité") || score == "40-40 (Égalité)")
             {
                 _match.Player1.GameScore = GameScore.Forty;
@@ -150,7 +147,6 @@ namespace BDD_Projet_Jeux.Tennis
                 _match.Player1.GamesWon = int.Parse(parts[0]);
                 _match.Player2.GamesWon = int.Parse(parts[1]);
                 
-                // Auto-trigger tie-break if 6-6
                 if (score == "6-6")
                 {
                     _match.StartTieBreak();

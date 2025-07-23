@@ -88,30 +88,25 @@ namespace BDD_Projet_Jeux
                 CurrentPlayer = $"Joueur {_game.CurrentPlayerTicTacToe}",
                 IsGameOver = _game.IsGameOver
             };
-
-            // Add player "scores" (for consistency, though TicTacToe doesn't have traditional scores)
+            
             state.Players.Add("Joueur X", _game.Result == GameResult.XWins ? 1 : 0);
             state.Players.Add("Joueur O", _game.Result == GameResult.OWins ? 1 : 0);
 
             return state;
         }
-
-        // Expose the internal TicTacToe for backward compatibility with existing tests
+        
         public TicTacToe GetTicTacToe()
         {
             return _game;
         }
 
-        // Helper method for tests that need to set up specific board states
+        // Méthode auxiliaires pour les tests nécessitant la configuration d'états de plateaux spécifiques
         public void SetupBoardState(params (int row, int col, PlayerTicTacToe player)[] moves)
         {
             foreach (var (row, col, player) in moves)
             {
-                // Ensure the right player is active
                 while (_game.CurrentPlayerTicTacToe != player && !_game.IsGameOver)
                 {
-                    // Make a dummy move to switch players if needed
-                    // This is a test helper, so we can be a bit hacky here
                     break;
                 }
                 
@@ -121,8 +116,7 @@ namespace BDD_Projet_Jeux
                 }
             }
         }
-
-        // Alternative PlayTurn method that accepts player explicitly (for test compatibility)
+        
         public UGameResult PlayTurnAsPlayer(PlayerTicTacToe player, int row, int col)
         {
             if (_game.CurrentPlayerTicTacToe != player)
