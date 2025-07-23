@@ -9,7 +9,7 @@ namespace BDD_Projet_Jeux_Tests.Steps
         private readonly ScenarioContext _scenarioContext;
         private readonly TestContext _testContext;
         private TennisGame _tennisGame;
-        private Match _match; // For backward compatibility
+        private Match _match;
 
         public TennisStepDefinitions(ScenarioContext scenarioContext, TestContext testContext)
         {

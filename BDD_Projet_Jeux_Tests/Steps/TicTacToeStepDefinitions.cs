@@ -9,7 +9,7 @@ public sealed class TicTacToeStepDefinitions
     private readonly ScenarioContext _scenarioContext;
     private readonly TestContext _testContext;
     private TicTacToeGame _ticTacToeGame;
-    private TicTacToe _game; // For backward compatibility
+    private TicTacToe _game;
 
     public TicTacToeStepDefinitions(ScenarioContext scenarioContext, TestContext testContext)
     {
