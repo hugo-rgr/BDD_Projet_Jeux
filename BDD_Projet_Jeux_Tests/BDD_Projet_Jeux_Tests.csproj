@@ -7,16 +7,38 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Include="TechTalk.SpecFlow"/>
+        <Using Include="TechTalk.SpecFlow" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0"/>
-        <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57"/>
-        <PackageReference Include="SpecFlow.NUnit" Version="3.9.22"/>
-        <PackageReference Include="nunit" Version="3.13.2"/>
-        <PackageReference Include="NUnit3TestAdapter" Version="4.1.0"/>
-        <PackageReference Include="FluentAssertions" Version="6.2.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+        <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
+        <PackageReference Include="SpecFlow.NUnit" Version="3.9.22" />
+        <PackageReference Include="nunit" Version="3.13.2" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
+        <PackageReference Include="FluentAssertions" Version="6.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Features\Mastermind\CodeBreaking.feature" />
+      <UpToDateCheckInput Remove="Features\Mastermind\FeedbackSystem.feature" />
+      <UpToDateCheckInput Remove="Features\Flechettes\GameInitialization.feature" />
+      <UpToDateCheckInput Remove="Features\Flechettes\Scoring.feature" />
+      <UpToDateCheckInput Remove="Features\Bowling\FrameScoring.feature" />
+      <UpToDateCheckInput Remove="Features\Bowling\SpecialCases.feature" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckBuild Remove="Features\Mastermind\CodeBreaking.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Mastermind\FeedbackSystem.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Flechettes\GameInitialization.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Flechettes\Scoring.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Bowling\FrameScoring.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Bowling\SpecialCases.feature.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BDD_Projet_Jeux\BDD_Projet_Jeux.csproj" />
     </ItemGroup>
 
 </Project>
