@@ -38,6 +38,7 @@
     </ItemGroup>
 
     <ItemGroup>
+
       <ProjectReference Include="..\BDD_Projet_Jeux\BDD_Projet_Jeux.csproj" />
     </ItemGroup>
 
