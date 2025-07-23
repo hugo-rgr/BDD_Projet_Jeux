@@ -1,6 +1,6 @@
 namespace BDD_Projet_Jeux.Utilities
 {
-    public class GameResult
+    public class UGameResult
     {
         public bool IsValid { get; set; }
         public bool IsGameOver { get; set; }

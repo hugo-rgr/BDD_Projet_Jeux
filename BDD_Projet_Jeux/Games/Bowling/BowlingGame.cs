@@ -25,7 +25,7 @@ namespace BDD_Projet_Jeux.Games.Bowling
             _isGameOver = false;
         }
 
-        public GameResult PlayTurn(params object[] inputs)
+        public UGameResult PlayTurn(params object[] inputs)
         {
             if (_isGameOver)
                 throw new InvalidOperationException("Partie terminée");
@@ -45,7 +45,7 @@ namespace BDD_Projet_Jeux.Games.Bowling
                     if (_currentFrame > 10)
                     {
                         _isGameOver = true;
-                        return new GameResult {
+                        return new UGameResult {
                             IsGameOver = true,
                             Winner = GetWinner()
                         };
@@ -53,7 +53,7 @@ namespace BDD_Projet_Jeux.Games.Bowling
                 }
             }
 
-            return new GameResult {
+            return new UGameResult {
                 Message = $"Frame {_currentFrame}, Joueur {_currentPlayerIndex + 1}"
             };
         }

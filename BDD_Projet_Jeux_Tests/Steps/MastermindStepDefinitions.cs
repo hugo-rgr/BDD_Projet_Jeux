@@ -7,7 +7,7 @@ using BDD_Projet_Jeux.Utilities;
 public class MastermindSteps
 {
     private MastermindGame _game;
-    private GameResult _lastResult;
+    private UGameResult _lastResult;
     private TestContext _testContext;
 
     public MastermindSteps(TestContext testContext)

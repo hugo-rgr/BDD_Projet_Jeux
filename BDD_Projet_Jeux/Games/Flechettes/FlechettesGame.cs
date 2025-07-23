@@ -33,7 +33,7 @@ namespace BDD_Projet_Jeux.Games.Flechettes
             _isGameOver = false;
         }
 
-        public GameResult PlayTurn(params object[] inputs)
+        public UGameResult PlayTurn(params object[] inputs)
         {
             if (_isGameOver)
                 throw new InvalidOperationException("Partie terminée");
@@ -42,14 +42,14 @@ namespace BDD_Projet_Jeux.Games.Flechettes
             var currentPlayer = _players[_currentPlayerIndex];
 
             if (!_rules.IsValidScore(currentPlayer, score))
-                return new GameResult { IsValid = false, Message = "Score invalide" };
+                return new UGameResult { IsValid = false, Message = "Score invalide" };
 
             currentPlayer.Score -= score;
 
             if (_rules.CheckVictory(currentPlayer))
             {
                 _isGameOver = true;
-                return new GameResult { 
+                return new UGameResult { 
                     IsValid = true, 
                     IsGameOver = true, 
                     Winner = currentPlayer.Name 
@@ -57,7 +57,7 @@ namespace BDD_Projet_Jeux.Games.Flechettes
             }
 
             _currentPlayerIndex = (_currentPlayerIndex + 1) % _players.Count;
-            return new GameResult { IsValid = true };
+            return new UGameResult { IsValid = true };
         }
         public void SetPlayerScore(string playerName, int score)
         {

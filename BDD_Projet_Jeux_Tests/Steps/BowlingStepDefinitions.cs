@@ -7,7 +7,7 @@ using BDD_Projet_Jeux.Utilities;
 public class BowlingSteps
 {
     private BowlingGame _game;
-    private GameResult _lastResult;
+    private UGameResult _lastResult;
     private TestContext _testContext;
 
     public BowlingSteps(TestContext testContext)
@@ -45,7 +45,7 @@ public class BowlingSteps
         catch (Exception ex)
         {
             _testContext.LastException = ex;
-            _lastResult = new GameResult { IsValid = false, Message = ex.Message };
+            _lastResult = new UGameResult { IsValid = false, Message = ex.Message };
         }
     }
 
