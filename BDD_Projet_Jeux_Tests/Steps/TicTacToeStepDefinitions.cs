@@ -7,17 +7,23 @@ namespace BDD_Projet_Jeux_Tests.Steps;
 public sealed class TicTacToeStepDefinitions
 {
     private readonly ScenarioContext _scenarioContext;
-    private TicTacToe _game;
+    private readonly TestContext _testContext;
+    private TicTacToeGame _ticTacToeGame;
+    private TicTacToe _game; // For backward compatibility
 
-    public TicTacToeStepDefinitions(ScenarioContext scenarioContext)
+    public TicTacToeStepDefinitions(ScenarioContext scenarioContext, TestContext testContext)
     {
         _scenarioContext = scenarioContext;
+        _testContext = testContext;
     }
 
     [Given(@"une nouvelle partie de TicTacToe est créée")]
     public void GivenUneNouvellePartieDeTicTacToeEstCreee()
     {
-        _game = new TicTacToe();
+        _ticTacToeGame = new TicTacToeGame();
+        _ticTacToeGame.Initialize(2);
+        _game = _ticTacToeGame.GetTicTacToe();
+        _testContext.CurrentGame = _ticTacToeGame;
     }
 
     [Given(@"le joueur (.*) commence la partie")]
@@ -31,7 +37,9 @@ public sealed class TicTacToeStepDefinitions
     {
         var expectedPlayer = Enum.Parse<PlayerTicTacToe>(player);
         _game.CurrentPlayerTicTacToe.Should().Be(expectedPlayer);
-        _game.MakeMove(row, col);
+        
+        var result = _ticTacToeGame.PlayTurn(row, col);
+        _testContext.LastResult = result;
     }
 
     [When(@"le joueur (.*) tente de jouer en position \((\d+),(\d+)\)")]
@@ -42,25 +50,32 @@ public sealed class TicTacToeStepDefinitions
             _scenarioContext["exception"] = null;
             
             // Ne pas vérifier le tour du joueur si la partie est terminée
-            // Car c'est justement ce qu'on veut tester
             if (!_game.IsGameOver)
             {
                 var expectedPlayer = Enum.Parse<PlayerTicTacToe>(player);
                 _game.CurrentPlayerTicTacToe.Should().Be(expectedPlayer);
             }
             
-            _game.MakeMove(row, col);
+            var result = _ticTacToeGame.PlayTurn(row, col);
+            _testContext.LastResult = result;
+            
+            if (!result.IsValid)
+            {
+                _scenarioContext["exception"] = new Exception(result.Message);
+            }
         }
         catch (Exception e)
         {
             _scenarioContext["exception"] = e;
+            _testContext.LastException = e;
         }
     }
 
     [Given(@"le joueur (.*) a joué en position \((\d+),(\d+)\)")]
     public void GivenLeJoueurAJoueEnPosition(string player, int row, int col)
     {
-        _game.MakeMove(row, col);
+        var result = _ticTacToeGame.PlayTurn(row, col);
+        _testContext.LastResult = result;
     }
 
     [Given(@"les mouvements suivants ont été joués:")]
@@ -73,7 +88,8 @@ public sealed class TicTacToeStepDefinitions
             var r = int.Parse(position[0]);
             var c = int.Parse(position[1]);
             
-            _game.MakeMove(r, c);
+            var result = _ticTacToeGame.PlayTurn(r, c);
+            _testContext.LastResult = result;
         }
     }
 
@@ -83,11 +99,11 @@ public sealed class TicTacToeStepDefinitions
         // Setup d'une partie gagnée pour les tests
         if (player == "X")
         {
-            _game.MakeMove(0, 0); // X
-            _game.MakeMove(1, 0); // O
-            _game.MakeMove(0, 1); // X
-            _game.MakeMove(1, 1); // O
-            _game.MakeMove(0, 2); // X gagne
+            _ticTacToeGame.PlayTurn(0, 0); // X
+            _ticTacToeGame.PlayTurn(1, 0); // O
+            _ticTacToeGame.PlayTurn(0, 1); // X
+            _ticTacToeGame.PlayTurn(1, 1); // O
+            _ticTacToeGame.PlayTurn(0, 2); // X gagne
         }
         
         // Vérifier que la partie est bien terminée
@@ -170,7 +186,7 @@ public sealed class TicTacToeStepDefinitions
     [When(@"je demande l'état de la partie")]
     public void WhenJeDemandeLetatDeLaPartie()
     {
-        var state = _game.GetBoardState();
+        var state = _ticTacToeGame.GetCurrentState();
     }
 
     [Then(@"la grille affiche:")]

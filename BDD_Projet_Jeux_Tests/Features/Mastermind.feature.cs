@@ -88,8 +88,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition exacte", "    Quand je propose \"RGBY\"\n    Alors je devrais recevoir \"4 pions bien placés\"\n " +
-                    "   Et la partie doit être terminée\n    Et je devrais être déclaré vainqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition exacte", "    Quand je propose \"RGBY\"\r\n    Alors je devrais recevoir \"4 pions bien placés\"\r" +
+                    "\n    Et la partie doit être terminée\r\n    Et je devrais être déclaré vainqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -123,8 +123,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition partielle", "    Quand je propose \"RGYB\"\n    Alors je devrais recevoir \"2 pions bien placés, 2" +
-                    " couleurs correctes\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition partielle", "    Quand je propose \"RGYB\"\r\n    Alors je devrais recevoir \"2 pions bien placés, " +
+                    "2 couleurs correctes\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 15
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -158,8 +158,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tentative invalide", "    Quand je propose \"ABCD\"\n    Alors le système doit rejeter la tentative\n    Et" +
-                    " afficher \"Couleurs valides: R,G,B,Y,O,P\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tentative invalide", "    Quand je propose \"ABCD\"\r\n    Alors le système doit rejeter la tentative\r\n    " +
+                    "Et afficher \"Couleurs valides: R,G,B,Y,O,P\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 20
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -193,8 +193,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Longueur incorrecte", "    Quand je propose \"RGB\"\n    Alors le système doit rejeter la tentative\n    Et " +
-                    "afficher \"Le code doit faire 4 caractères\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Longueur incorrecte", "    Quand je propose \"RGB\"\r\n    Alors le système doit rejeter la tentative\r\n    E" +
+                    "t afficher \"Le code doit faire 4 caractères\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 25
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -275,8 +275,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition avec caractères interdits", "    Quand je propose \"R@BY\"\n    Alors le système doit rejeter la tentative\n    Et" +
-                    " afficher \"Couleurs valides: R,G,B,Y,O,P\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition avec caractères interdits", "    Quand je propose \"R@BY\"\r\n    Alors le système doit rejeter la tentative\r\n    " +
+                    "Et afficher \"Couleurs valides: R,G,B,Y,O,P\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 48
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -310,8 +310,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition avec doublons valides", "    Quand je propose \"RRGG\"\n    Alors je devrais recevoir \"2 pions bien placés, 2" +
-                    " couleurs correctes\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Proposition avec doublons valides", "    Quand je propose \"RRGG\"\r\n    Alors je devrais recevoir \"2 pions bien placés, " +
+                    "2 couleurs correctes\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 53
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -440,9 +440,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Code secret avec doublons", "    Etant donné une nouvelle partie de Mastermind avec le code secret \"RRGG\"\n    " +
-                    "Quand je propose \"RGRG\"\n    Alors je devrais recevoir \"2 pions bien placés, 2 co" +
-                    "uleurs correctes\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Code secret avec doublons", "    Etant donné une nouvelle partie de Mastermind avec le code secret \"RRGG\"\r\n   " +
+                    " Quand je propose \"RGRG\"\r\n    Alors je devrais recevoir \"2 pions bien placés, 2 " +
+                    "couleurs correctes\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 90
     this.ScenarioInitialize(scenarioInfo);
 #line hidden

@@ -1,24 +1,29 @@
 ﻿using BDD_Projet_Jeux.Tennis;
 using NUnit.Framework;
 
-
 namespace BDD_Projet_Jeux_Tests.Steps
 {
     [Binding]
     public sealed class TennisStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
-        private Match _match;
+        private readonly TestContext _testContext;
+        private TennisGame _tennisGame;
+        private Match _match; // For backward compatibility
 
-        public TennisStepDefinitions(ScenarioContext scenarioContext)
+        public TennisStepDefinitions(ScenarioContext scenarioContext, TestContext testContext)
         {
             _scenarioContext = scenarioContext;
+            _testContext = testContext;
         }
 
         [Given(@"un nouveau match de tennis est initialisé")]
         public void GivenUnNouveauMatchDeTennisEstInitialise()
         {
-            _match = new Match();
+            _tennisGame = new TennisGame();
+            _tennisGame.Initialize(2);
+            _match = _tennisGame.GetMatch();
+            _testContext.CurrentGame = _tennisGame;
             _scenarioContext["match"] = _match;
         }
 
@@ -33,25 +38,19 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [Given(@"le score du jeu est (.*)")]
         public void GivenLeScoreDuJeuEst(string score)
         {
-            SetGameScore(score);
+            _tennisGame.SetGameScore(score);
         }
 
         [Given(@"le score des jeux est (.*)")]
         public void GivenLeScoreDesJeuxEst(string score)
         {
-            SetGamesScore(score);
-            
-            // Si le score est 6-6, déclencher automatiquement le tie-break
-            if (score == "6-6")
-            {
-                _match.StartTieBreak();
-            }
+            _tennisGame.SetGamesScore(score);
         }
 
         [Given(@"le score des sets est (.*)")]
         public void GivenLeScoreDesSetsEst(string score)
         {
-            SetSetsScore(score);
+            _tennisGame.SetSetsScore(score);
         }
 
         [Given(@"le jeu vient de commencer")]
@@ -72,7 +71,7 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [Given(@"le score du tie-break est (.*)")]
         public void GivenLeScoreDuTieBreakEst(string score)
         {
-            SetTieBreakScore(score);
+            _tennisGame.SetTieBreakScore(score);
         }
 
         [Given(@"le joueur (.*) a remporté le set (.*)")]
@@ -122,7 +121,15 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [When(@"le joueur (.*) marque un point(?: dans le tie-break)?")]
         public void WhenLeJoueurMarqueUnPoint(int numeroJoueur)
         {
-            _match.PlayerScores(numeroJoueur);
+            try
+            {
+                var result = _tennisGame.PlayTurn(numeroJoueur);
+                _testContext.LastResult = result;
+            }
+            catch (Exception ex)
+            {
+                _testContext.LastException = ex;
+            }
         }
 
         [When(@"le joueur (.*) remporte le jeu suivant")]
@@ -138,7 +145,8 @@ namespace BDD_Projet_Jeux_Tests.Steps
             
             for (int i = 0; i < 4; i++)
             {
-                _match.PlayerScores(numeroJoueur);
+                var result = _tennisGame.PlayTurn(numeroJoueur);
+                _testContext.LastResult = result;
                 
                 if (_match.GameJustWon)
                     break;
@@ -173,11 +181,13 @@ namespace BDD_Projet_Jeux_Tests.Steps
         {
             try
             {
-                _match.PlayerScores(numeroJoueur);
+                var result = _tennisGame.PlayTurn(numeroJoueur);
+                _testContext.LastResult = result;
                 _scenarioContext["exception"] = null;
             }
             catch (Exception ex)
             {
+                _testContext.LastException = ex;
                 _scenarioContext["exception"] = ex;
             }
         }
@@ -188,6 +198,7 @@ namespace BDD_Projet_Jeux_Tests.Steps
             _scenarioContext["matchState"] = _match.State;
         }
 
+        // All the Then steps remain the same since they work with the Match object
         [Then(@"le score du jeu devient (.*)")]
         public void ThenLeScoreDuJeuDevient(string scoreAttendu)
         {
@@ -218,23 +229,17 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [Then(@"le score du jeu revient à (.*)")]
         public void ThenLeScoreDesPointsRevientA(string scoreAttendu)
         {
-            //Attention, ici c'est pour les points du jeu, pas le nombre de jeux gagnés par chacun
             Assert.AreEqual(scoreAttendu, _match.GetGameScore());
         }
 
         [Then(@"le joueur (.*) remporte le set(?:\s+avec un score de\s+(.*)|\s+(\d+-\d+))?")]
         public void ThenLeJoueurRemporteLeSet(int numeroJoueur, string scoreSetAvecTexte = null, string scoreSetDirect = null)
         {
-            // Vérifier que le set vient d'être gagné OU que le joueur a des sets gagnés
             bool setGagne = _match.SetJustWon || 
                             (numeroJoueur == 1 ? _match.Player1.SetsWon > 0 : _match.Player2.SetsWon > 0);
             
             Assert.IsTrue(setGagne, $"Le joueur {numeroJoueur} devrait avoir gagné un set");
-            
-            // Reset le flag pour les prochaines vérifications
             _match.SetJustWon = false;
-            
-            // Le score (scoreSetAvecTexte ou scoreSetDirect) est informatif, pas de vérification stricte
         }
 
         [Then(@"le score des sets devient (.*)")]
@@ -268,8 +273,6 @@ namespace BDD_Projet_Jeux_Tests.Steps
         public void ThenLeJoueurRemporteLeTieBreak(int numeroJoueur, string score)
         {
             Assert.IsFalse(_match.IsTieBreak, "Le tie-break devrait être terminé");
-            
-            // Vérifier que le joueur a gagné un set (car gagner un tie-break = gagner le set)
             ThenLeJoueurRemporteLeSet(numeroJoueur);
         }
 
@@ -298,100 +301,6 @@ namespace BDD_Projet_Jeux_Tests.Steps
         public void ThenLeSetActuelEstLeSetNumero(int numeroSet)
         {
             Assert.AreEqual(numeroSet, _match.CurrentSet);
-        }
-
-        
-        
-        
-        // Méthodes auxiliaires privées pour les tests //
-
-        private void SetGameScore(string score)
-        {
-            if (score.Contains("Égalité") || score == "40-40 (Égalité)")
-            {
-                _match.Player1.GameScore = GameScore.Forty;
-                _match.Player2.GameScore = GameScore.Forty;
-                _match.Player1.HasAdvantage = false;
-                _match.Player2.HasAdvantage = false;
-            }
-            else if (score.Contains("Avantage"))
-            {
-                _match.Player1.GameScore = GameScore.Forty;
-                _match.Player2.GameScore = GameScore.Forty;
-                if (score.Contains("Joueur 1"))
-                {
-                    _match.Player1.HasAdvantage = true;
-                    _match.Player2.HasAdvantage = false;
-                }
-                else if (score.Contains("Joueur 2"))
-                {
-                    _match.Player1.HasAdvantage = false;
-                    _match.Player2.HasAdvantage = true;
-                }
-            }
-            else
-            {
-                var parts = score.Split('-');
-                if (parts.Length == 2)
-                {
-                    SetPlayerGameScore(_match.Player1, parts[0]);
-                    SetPlayerGameScore(_match.Player2, parts[1]);
-                    _match.Player1.HasAdvantage = false;
-                    _match.Player2.HasAdvantage = false;
-                }
-            }
-        }
-
-        private void SetPlayerGameScore(PlayerTennis playerTennis, string score)
-        {
-            switch (score)
-            {
-                case "0":
-                    playerTennis.GameScore = GameScore.Zero;
-                    break;
-                case "15":
-                    playerTennis.GameScore = GameScore.Fifteen;
-                    break;
-                case "30":
-                    playerTennis.GameScore = GameScore.Thirty;
-                    break;
-                case "40":
-                    playerTennis.GameScore = GameScore.Forty;
-                    break;
-            }
-        }
-
-        private void SetGamesScore(string score)
-        {
-            var parts = score.Split('-');
-            if (parts.Length == 2)
-            {
-                _match.Player1.GamesWon = int.Parse(parts[0]);
-                _match.Player2.GamesWon = int.Parse(parts[1]);
-            }
-        }
-
-        private void SetSetsScore(string score)
-        {
-            var parts = score.Split('-');
-            if (parts.Length == 2)
-            {
-                _match.Player1.SetsWon = int.Parse(parts[0]);
-                _match.Player2.SetsWon = int.Parse(parts[1]);
-                
-                int totalSets = _match.Player1.SetsWon + _match.Player2.SetsWon;
-                _match.CurrentSet = totalSets + 1;
-            }
-        }
-
-        private void SetTieBreakScore(string score)
-        {
-            var parts = score.Split('-');
-            if (parts.Length == 2)
-            {
-                _match.Player1.TieBreakScore = int.Parse(parts[0]);
-                _match.Player2.TieBreakScore = int.Parse(parts[1]);
-            }
         }
     }
 }

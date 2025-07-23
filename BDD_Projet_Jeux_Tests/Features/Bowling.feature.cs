@@ -88,8 +88,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Frame simple", "    Quand le joueur 1 fait un lancer de 7\n    Et un lancer de 2\n    Alors son sco" +
-                    "re pour ce frame doit être 9\n    Et son score total doit être 9", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Frame simple", "    Quand le joueur 1 fait un lancer de 7\r\n    Et un lancer de 2\r\n    Alors son s" +
+                    "core pour ce frame doit être 9\r\n    Et son score total doit être 9", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -123,9 +123,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Spare simple", "    Quand le joueur 1 fait un lancer de 7\n    Et un lancer de 3 (spare)\n    Et au" +
-                    " frame suivant il fait 5\n    Alors son score pour le premier frame doit être 15\n" +
-                    "    Et son score total doit être 20", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Spare simple", "    Quand le joueur 1 fait un lancer de 7\r\n    Et un lancer de 3 (spare)\r\n    Et " +
+                    "au frame suivant il fait 5\r\n    Alors son score pour le premier frame doit être " +
+                    "15\r\n    Et son score total doit être 20", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 15
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -159,8 +159,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Strike parfait", "    Quand le joueur 1 fait 12 strikes consécutifs\n    Alors son score total doit " +
-                    "être 300\n    Et la partie doit être terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Strike parfait", "    Quand le joueur 1 fait 12 strikes consécutifs\r\n    Alors son score total doit" +
+                    " être 300\r\n    Et la partie doit être terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 23
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -194,9 +194,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Strike au dernier frame", "    Etant donné le joueur 1 est au 10ème frame\n    Quand il fait un strike\n    Al" +
-                    "ors il doit avoir droit à 2 lancers supplémentaires\n    Quand il fait 7 puis 2\n " +
-                    "   Alors son score pour ce frame doit être 19", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Strike au dernier frame", "    Etant donné le joueur 1 est au 10ème frame\r\n    Quand il fait un strike\r\n    " +
+                    "Alors il doit avoir droit à 2 lancers supplémentaires\r\n    Quand il fait 7 puis " +
+                    "2\r\n    Alors son score pour ce frame doit être 19", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 28
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -230,8 +230,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer invalide", "    Quand le joueur 1 fait un lancer de 11\n    Alors le système doit rejeter le l" +
-                    "ancer\n    Et afficher \"Nombre de quilles invalide\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer invalide", "    Quand le joueur 1 fait un lancer de 11\r\n    Alors le système doit rejeter le " +
+                    "lancer\r\n    Et afficher \"Nombre de quilles invalide\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 36
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -265,8 +265,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Partie à un seul joueur", "    Etant donné une nouvelle partie de bowling avec 1 joueurs\n    Quand le joueur" +
-                    " 1 fait un lancer de 5\n    Alors son score total doit être 5", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Partie à un seul joueur", "    Etant donné une nouvelle partie de bowling avec 1 joueurs\r\n    Quand le joueu" +
+                    "r 1 fait un lancer de 5\r\n    Alors son score total doit être 5", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 42
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -300,8 +300,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score minimum", "    Quand le joueur 1 fait 20 lancers de 0\n    Alors son score total doit être 0\n" +
-                    "    Et la partie doit être terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score minimum", "    Quand le joueur 1 fait 20 lancers de 0\r\n    Alors son score total doit être 0" +
+                    "\r\n    Et la partie doit être terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 47
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -335,8 +335,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Spare au dernier frame", "    Etant donné le joueur 1 est au 10ème frame\n    Quand il fait 5 puis 5\n    Et " +
-                    "il fait 7\n    Alors son score pour ce frame doit être 17", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Spare au dernier frame", "    Etant donné le joueur 1 est au 10ème frame\r\n    Quand il fait 5 puis 5\r\n    E" +
+                    "t il fait 7\r\n    Alors son score pour ce frame doit être 17", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 52
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -370,8 +370,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer négatif", "    Quand le joueur 1 fait un lancer de -1\n    Alors le système doit rejeter le l" +
-                    "ancer\n    Et afficher \"Nombre de quilles invalide\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer négatif", "    Quand le joueur 1 fait un lancer de -1\r\n    Alors le système doit rejeter le " +
+                    "lancer\r\n    Et afficher \"Nombre de quilles invalide\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 58
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -405,8 +405,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer après la fin de la partie", "    Quand le joueur 1 fait 20 lancers de 0\n    Et il fait un lancer de 5\n    Alor" +
-                    "s le système doit rejeter le lancer\n    Et afficher \"Partie terminée\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer après la fin de la partie", "    Quand le joueur 1 fait 20 lancers de 0\r\n    Et il fait un lancer de 5\r\n    Al" +
+                    "ors le système doit rejeter le lancer\r\n    Et afficher \"Partie terminée\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 63
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -440,8 +440,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Changement de joueur correct", "    Quand le joueur 1 fait un lancer de 3\n    Et le joueur 2 fait un lancer de 4\n" +
-                    "    Alors le prochain joueur doit être le joueur 1", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Changement de joueur correct", "    Quand le joueur 1 fait un lancer de 3\r\n    Et le joueur 2 fait un lancer de 4" +
+                    "\r\n    Alors le prochain joueur doit être le joueur 1", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 69
     this.ScenarioInitialize(scenarioInfo);
 #line hidden

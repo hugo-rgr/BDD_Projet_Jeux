@@ -88,8 +88,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tour simple sans victoire", "    Quand le joueur 1 marque 20 points\n    Alors son score doit être 481\n    Et l" +
-                    "e prochain joueur doit être le joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tour simple sans victoire", "    Quand le joueur 1 marque 20 points\r\n    Alors son score doit être 481\r\n    Et" +
+                    " le prochain joueur doit être le joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -123,9 +123,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Victoire par score exact", "    Quand le joueur 1 marque 500 points\n    Et le joueur 2 marque 400 points\n    " +
-                    "Et le joueur 1 marque 1 point\n    Alors la partie doit être terminée\n    Et le j" +
-                    "oueur 1 doit être déclaré vainqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Victoire par score exact", "    Quand le joueur 1 marque 500 points\r\n    Et le joueur 2 marque 400 points\r\n  " +
+                    "  Et le joueur 1 marque 1 point\r\n    Alors la partie doit être terminée\r\n    Et " +
+                    "le joueur 1 doit être déclaré vainqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 14
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -159,8 +159,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score excédentaire simple", "    Etant donné le joueur 1 a 10 points restants\n    Quand il marque 15 points\n  " +
-                    "  Alors son score doit rester à 10\n    Et le tour doit passer au joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score excédentaire simple", "    Etant donné le joueur 1 a 10 points restants\r\n    Quand il marque 15 points\r\n" +
+                    "    Alors son score doit rester à 10\r\n    Et le tour doit passer au joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 22
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -194,9 +194,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Double score excédentaire", "    Etant donné le joueur 1 a 5 points restants\n    Quand il marque 20 points\n   " +
-                    " Et il marque 3 points\n    Alors son score doit rester à 5\n    Et le tour doit p" +
-                    "asser au joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Double score excédentaire", "    Etant donné le joueur 1 a 5 points restants\r\n    Quand il marque 20 points\r\n " +
+                    "   Et il marque 3 points\r\n    Alors son score doit rester à 5\r\n    Et le tour do" +
+                    "it passer au joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 28
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -230,10 +230,10 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fin sur double activée", "    Etant donné une partie avec la règle \"Fin sur double\"\n    Quand le joueur 1 a" +
-                    " 40 points restants\n    Et il marque 20 points (simple)\n    Et il marque 20 poin" +
-                    "ts (double)\n    Alors son score final doit être 0\n    Et la partie doit être ter" +
-                    "minée", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fin sur double activée", "    Etant donné une partie avec la règle \"Fin sur double\"\r\n    Quand le joueur 1 " +
+                    "a 40 points restants\r\n    Et il marque 20 points (simple)\r\n    Et il marque 20 p" +
+                    "oints (double)\r\n    Alors son score final doit être 0\r\n    Et la partie doit êtr" +
+                    "e terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 36
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -267,8 +267,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score négatif", "    Quand le joueur 1 marque -5 points\n    Alors le système doit rejeter le score" +
-                    "\n    Et afficher \"Score invalide\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score négatif", "    Quand le joueur 1 marque -5 points\r\n    Alors le système doit rejeter le scor" +
+                    "e\r\n    Et afficher \"Score invalide\"", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 45
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -302,9 +302,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Victoire pile à 0", "    Etant donné le joueur 1 a 10 points restants\n    Quand il marque 10 points\n  " +
-                    "  Alors la partie doit être terminée\n    Et le joueur 1 doit être déclaré vainqu" +
-                    "eur", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Victoire pile à 0", "    Etant donné le joueur 1 a 10 points restants\r\n    Quand il marque 10 points\r\n" +
+                    "    Alors la partie doit être terminée\r\n    Et le joueur 1 doit être déclaré vai" +
+                    "nqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 51
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -338,8 +338,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score qui dépasse 0", "    Etant donné le joueur 1 a 5 points restants\n    Quand il marque 6 points\n    " +
-                    "Alors son score doit rester à 5\n    Et le tour doit passer au joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score qui dépasse 0", "    Etant donné le joueur 1 a 5 points restants\r\n    Quand il marque 6 points\r\n  " +
+                    "  Alors son score doit rester à 5\r\n    Et le tour doit passer au joueur 2", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 57
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -373,8 +373,8 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score de 0 dès le début", "    Etant donné le joueur 1 a 0 points restants\n    Alors la partie doit être ter" +
-                    "minée\n    Et le joueur 1 doit être déclaré vainqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Score de 0 dès le début", "    Etant donné le joueur 1 a 0 points restants\r\n    Alors la partie doit être te" +
+                    "rminée\r\n    Et le joueur 1 doit être déclaré vainqueur", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 63
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -408,9 +408,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Règle \"fin sur double\" non respectée", "    Etant donné une partie avec la règle \"Fin sur double\"\n    Et le joueur 1 a 20" +
-                    " points restants\n    Quand il marque 20 points (simple)\n    Alors son score doit" +
-                    " rester à 20\n    Et la partie ne doit pas être terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Règle \"fin sur double\" non respectée", "    Etant donné une partie avec la règle \"Fin sur double\"\r\n    Et le joueur 1 a 2" +
+                    "0 points restants\r\n    Quand il marque 20 points (simple)\r\n    Alors son score d" +
+                    "oit rester à 20\r\n    Et la partie ne doit pas être terminée", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 68
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -444,9 +444,9 @@ namespace BDD_Projet_Jeux_Tests.Features
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Partie à 3 joueurs", "    Etant donné une nouvelle partie de fléchettes avec 3 joueurs\n    Quand le jou" +
-                    "eur 1 marque 100 points\n    Et le joueur 2 marque 150 points\n    Et le joueur 3 " +
-                    "marque 200 points\n    Alors le tour doit passer au joueur 1", tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Partie à 3 joueurs", "    Etant donné une nouvelle partie de fléchettes avec 3 joueurs\r\n    Quand le jo" +
+                    "ueur 1 marque 100 points\r\n    Et le joueur 2 marque 150 points\r\n    Et le joueur" +
+                    " 3 marque 200 points\r\n    Alors le tour doit passer au joueur 1", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 75
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
