@@ -7,7 +7,7 @@ using BDD_Projet_Jeux.Utilities;
 public class FlechettesSteps
 {
     private FlechettesGame _game;
-    private GameResult _lastResult;
+    private UGameResult _lastResult;
     private Exception _exception;
     private GameState _currentState;
 

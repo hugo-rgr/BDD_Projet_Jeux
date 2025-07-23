@@ -6,7 +6,7 @@ namespace BDD_Projet_Jeux.Games
     {
         string GameName { get; }
         void Initialize(int playerCount);
-        GameResult PlayTurn(params object[] inputs);
+        UGameResult PlayTurn(params object[] inputs);
         GameState GetCurrentState();
     }
 }

@@ -24,7 +24,7 @@ namespace BDD_Projet_Jeux.Games.Mastermind
         {
             _secretCode = code;
         }
-        public GameResult PlayTurn(params object[] inputs)
+        public UGameResult PlayTurn(params object[] inputs)
         {
             if (_remainingAttempts <= 0 || _isSolved)
                 throw new InvalidOperationException("Partie terminée");
@@ -37,7 +37,7 @@ namespace BDD_Projet_Jeux.Games.Mastermind
             if (feedback.IsPerfectMatch)
             {
                 _isSolved = true;
-                return new GameResult {
+                return new UGameResult {
                     IsGameOver = true,
                     Winner = "CodeBreaker",
                     Message = "Code trouvé!"
@@ -46,14 +46,14 @@ namespace BDD_Projet_Jeux.Games.Mastermind
 
             if (_remainingAttempts == 0)
             {
-                return new GameResult {
+                return new UGameResult {
                     IsGameOver = true,
                     Winner = "CodeMaker",
                     Message = "Tentatives épuisées"
                 };
             }
 
-            return new GameResult {
+            return new UGameResult {
                 Message = feedback.ToString()
             };
         }
