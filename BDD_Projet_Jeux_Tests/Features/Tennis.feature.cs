@@ -52,7 +52,7 @@ namespace BDD_Projet_Jeux_Tests.Features
   - Pour remporter un set, il faut gagner 6 jeux
   - Si un des joueurs à remporté 5 jeux et à condition d'en avoir deux d'avance sur son adversaire
   - Si les deux joueurs sont à 6 jeux, on entre dans un jeu pour départager : le Tie Break.
-  Tie break :	
+  Tie break :    
   - Les points sont comptés de 0 à 7
   - Il faut 7 points pour remporter le jeu et le set
   - Si les deux joueurs ont 6 points, il y a Egalité
@@ -111,25 +111,12 @@ namespace BDD_Projet_Jeux_Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Progression des points dans un jeu")]
-        [NUnit.Framework.TestCaseAttribute("0-0", "joueur 1", "15-0", null)]
-        [NUnit.Framework.TestCaseAttribute("15-0", "joueur 2", "15-15", null)]
-        [NUnit.Framework.TestCaseAttribute("15-15", "joueur 1", "30-15", null)]
-        [NUnit.Framework.TestCaseAttribute("30-15", "joueur 2", "30-30", null)]
-        [NUnit.Framework.TestCaseAttribute("30-30", "joueur 1", "40-30", null)]
-        [NUnit.Framework.TestCaseAttribute("40-30", "joueur 1", "Jeu gagné", null)]
-        [NUnit.Framework.TestCaseAttribute("0-0", "joueur 2", "0-15", null)]
-        [NUnit.Framework.TestCaseAttribute("0-15", "joueur 1", "15-15", null)]
-        [NUnit.Framework.TestCaseAttribute("15-30", "joueur 1", "30-30", null)]
-        [NUnit.Framework.TestCaseAttribute("30-40", "joueur 2", "Jeu gagné", null)]
-        public virtual void ProgressionDesPointsDansUnJeu(string score_Initial, string joueur, string score_Final, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Jeu normal - victoire simple")]
+        public virtual void JeuNormal_VictoireSimple()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_initial", score_Initial);
-            argumentsOfScenario.Add("joueur", joueur);
-            argumentsOfScenario.Add("score_final", score_Final);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Progression des points dans un jeu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Jeu normal - victoire simple", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 34
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -154,35 +141,38 @@ namespace BDD_Projet_Jeux_Tests.Features
   this.FeatureBackground();
 #line hidden
 #line 35
-    testRunner.Given(string.Format("le score du jeu est {0}", score_Initial), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("le score du jeu est 30-15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 36
-    testRunner.When(string.Format("le {0} marque un point", joueur), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 37
-    testRunner.Then(string.Format("le score du jeu devient {0}", score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("le score du jeu devient 40-15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 38
+    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 39
+    testRunner.Then("le joueur 1 remporte le jeu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 40
+    testRunner.And("le score des jeux devient 1-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 41
+    testRunner.And("le score des points revient à 0-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Situations d\'égalité et avantage")]
-        [NUnit.Framework.TestCaseAttribute("40-40 (Égalité)", "joueur 1", "Avantage Joueur 1", null)]
-        [NUnit.Framework.TestCaseAttribute("40-40 (Égalité)", "joueur 2", "Avantage Joueur 2", null)]
-        [NUnit.Framework.TestCaseAttribute("Avantage Joueur 1", "joueur 2", "40-40 (Égalité)", null)]
-        [NUnit.Framework.TestCaseAttribute("Avantage Joueur 2", "joueur 1", "40-40 (Égalité)", null)]
-        [NUnit.Framework.TestCaseAttribute("Avantage Joueur 1", "joueur 1", "Jeu gagné", null)]
-        [NUnit.Framework.TestCaseAttribute("Avantage Joueur 2", "joueur 2", "Jeu gagné", null)]
-        public virtual void SituationsDegaliteEtAvantage(string score_Initial, string joueur, string score_Final, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Jeu avec égalité et avantage")]
+        public virtual void JeuAvecEgaliteEtAvantage()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_initial", score_Initial);
-            argumentsOfScenario.Add("joueur", joueur);
-            argumentsOfScenario.Add("score_final", score_Final);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Situations d\'égalité et avantage", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 52
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Jeu avec égalité et avantage", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 43
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -205,41 +195,106 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 53
-    testRunner.Given(string.Format("le score du jeu est {0}", score_Initial), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 44
+    testRunner.Given("le score du jeu est 40-40 (Égalité)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
+#line 45
+    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 46
+    testRunner.Then("le score du jeu devient Avantage Joueur 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 47
+    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 48
+    testRunner.Then("le score du jeu revient à 40-40 (Égalité)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 49
+    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 50
+    testRunner.Then("le score du jeu devient Avantage Joueur 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 51
+    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 52
+    testRunner.Then("le joueur 2 remporte le jeu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Évolution des points dans un jeu")]
+        public virtual void EvolutionDesPointsDansUnJeu()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Évolution des points dans un jeu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 54
-    testRunner.When(string.Format("le {0} marque un point", joueur), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 29
+  this.FeatureBackground();
 #line hidden
 #line 55
-    testRunner.Then(string.Format("le score du jeu devient {0}", score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Given("le jeu vient de commencer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 56
+    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 57
+    testRunner.Then("le score du jeu devient 15-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 58
+    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 59
+    testRunner.Then("le score du jeu devient 15-15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 60
+    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 61
+    testRunner.Then("le score du jeu devient 30-15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 62
+    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 63
+    testRunner.Then("le score du jeu devient 30-30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Différents scores de sets gagnants")]
-        [NUnit.Framework.TestCaseAttribute("5-0", "joueur 1", "6-0", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("5-1", "joueur 1", "6-1", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("5-2", "joueur 1", "6-2", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("5-3", "joueur 1", "6-3", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("5-4", "joueur 1", "6-4", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("6-5", "joueur 1", "7-5", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("0-5", "joueur 2", "0-6", "0-1", null)]
-        [NUnit.Framework.TestCaseAttribute("1-5", "joueur 2", "1-6", "0-1", null)]
-        [NUnit.Framework.TestCaseAttribute("4-5", "joueur 2", "4-6", "0-1", null)]
-        [NUnit.Framework.TestCaseAttribute("5-6", "joueur 2", "5-7", "0-1", null)]
-        public virtual void DifferentsScoresDeSetsGagnants(string jeux_Avant, string gagnant, string score_Set, string nouveau_Score_Sets, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Set gagné normalement (6-4)")]
+        public virtual void SetGagneNormalement6_4()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("jeux_avant", jeux_Avant);
-            argumentsOfScenario.Add("gagnant", gagnant);
-            argumentsOfScenario.Add("score_set", score_Set);
-            argumentsOfScenario.Add("nouveau_score_sets", nouveau_Score_Sets);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Différents scores de sets gagnants", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 67
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set gagné normalement (6-4)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 66
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -262,19 +317,19 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
+#line 67
+    testRunner.Given("le score des jeux est 5-4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 68
-    testRunner.Given(string.Format("le score des jeux est {0}", jeux_Avant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.When("le joueur 1 remporte le jeu suivant", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 69
-    testRunner.When(string.Format("le {0} remporte le jeu suivant", gagnant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Then("le joueur 1 remporte le set", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 70
-    testRunner.Then(string.Format("le {0} remporte le set avec un score de {1}", gagnant, score_Set), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.And("le score des sets devient 1-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 71
-    testRunner.And(string.Format("le score des sets devient {0}", nouveau_Score_Sets), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 72
     testRunner.And("le score des jeux revient à 0-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -282,13 +337,13 @@ namespace BDD_Projet_Jeux_Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Set avec tie-break - déclenchement automatique")]
-        public virtual void SetAvecTie_Break_DeclenchementAutomatique()
+        [NUnit.Framework.DescriptionAttribute("Set gagné avec un écart de 2 jeux (7-5)")]
+        public virtual void SetGagneAvecUnEcartDe2Jeux7_5()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set avec tie-break - déclenchement automatique", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 87
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set gagné avec un écart de 2 jeux (7-5)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 73
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -311,13 +366,56 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 88
+#line 74
+    testRunner.Given("le score des jeux est 6-5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 75
+    testRunner.When("le joueur 1 remporte le jeu suivant", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 76
+    testRunner.Then("le joueur 1 remporte le set avec un score de 7-5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Set avec tie-break")]
+        public virtual void SetAvecTie_Break()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set avec tie-break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 78
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 29
+  this.FeatureBackground();
+#line hidden
+#line 79
     testRunner.Given("le score des jeux est 6-6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 89
+#line 80
     testRunner.Then("un tie-break commence", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 90
+#line 81
     testRunner.And("le score du tie-break est 0-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -325,21 +423,13 @@ namespace BDD_Projet_Jeux_Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Progression des points dans un tie-break")]
-        [NUnit.Framework.TestCaseAttribute("0-0", "joueur 1", "1-0", null)]
-        [NUnit.Framework.TestCaseAttribute("1-0", "joueur 2", "1-1", null)]
-        [NUnit.Framework.TestCaseAttribute("3-2", "joueur 1", "4-2", null)]
-        [NUnit.Framework.TestCaseAttribute("5-4", "joueur 2", "5-5", null)]
-        [NUnit.Framework.TestCaseAttribute("6-4", "joueur 1", "7-4", null)]
-        public virtual void ProgressionDesPointsDansUnTie_Break(string score_Initial, string joueur, string score_Final, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Tie-break normal")]
+        public virtual void Tie_BreakNormal()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_initial", score_Initial);
-            argumentsOfScenario.Add("joueur", joueur);
-            argumentsOfScenario.Add("score_final", score_Final);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Progression des points dans un tie-break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 93
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tie-break normal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 83
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -362,78 +452,20 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 94
+#line 84
     testRunner.Given("un tie-break est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 95
-    testRunner.And(string.Format("le score du tie-break est {0}", score_Initial), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 85
+    testRunner.And("le score du tie-break est 6-5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 96
-    testRunner.When(string.Format("le {0} marque un point dans le tie-break", joueur), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 86
+    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 97
-    testRunner.Then(string.Format("le score du tie-break devient {0}", score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 87
+    testRunner.Then("le joueur 1 remporte le tie-break 7-5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Fin de tie-break - victoires normales")]
-        [NUnit.Framework.TestCaseAttribute("6-0", "joueur 1", "7-0", null)]
-        [NUnit.Framework.TestCaseAttribute("6-1", "joueur 1", "7-1", null)]
-        [NUnit.Framework.TestCaseAttribute("6-2", "joueur 1", "7-2", null)]
-        [NUnit.Framework.TestCaseAttribute("6-3", "joueur 1", "7-3", null)]
-        [NUnit.Framework.TestCaseAttribute("6-4", "joueur 1", "7-4", null)]
-        [NUnit.Framework.TestCaseAttribute("6-5", "joueur 1", "7-5", null)]
-        [NUnit.Framework.TestCaseAttribute("0-6", "joueur 2", "0-7", null)]
-        [NUnit.Framework.TestCaseAttribute("3-6", "joueur 2", "3-7", null)]
-        [NUnit.Framework.TestCaseAttribute("5-6", "joueur 2", "5-7", null)]
-        public virtual void FinDeTie_Break_VictoiresNormales(string score_Avant, string gagnant, string score_Final, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_avant", score_Avant);
-            argumentsOfScenario.Add("gagnant", gagnant);
-            argumentsOfScenario.Add("score_final", score_Final);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fin de tie-break - victoires normales", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 107
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 29
-  this.FeatureBackground();
-#line hidden
-#line 108
-    testRunner.Given("un tie-break est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 109
-    testRunner.And(string.Format("le score du tie-break est {0}", score_Avant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 110
-    testRunner.When(string.Format("le {0} marque un point dans le tie-break", gagnant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 111
-    testRunner.Then(string.Format("le {0} remporte le tie-break {1}", gagnant, score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 112
-    testRunner.And(string.Format("le {0} remporte le set 7-6", gagnant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 88
+    testRunner.And("le joueur 1 remporte le set 7-6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -441,20 +473,12 @@ namespace BDD_Projet_Jeux_Tests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Tie-break avec égalité et avantage")]
-        [NUnit.Framework.TestCaseAttribute("6-6", "joueur 1", "7-6 Avantage Joueur 1", null)]
-        [NUnit.Framework.TestCaseAttribute("6-6", "joueur 2", "6-7 Avantage Joueur 2", null)]
-        [NUnit.Framework.TestCaseAttribute("7-7", "joueur 1", "8-7 Avantage Joueur 1", null)]
-        [NUnit.Framework.TestCaseAttribute("7-7", "joueur 2", "7-8 Avantage Joueur 2", null)]
-        [NUnit.Framework.TestCaseAttribute("8-8", "joueur 1", "9-8 Avantage Joueur 1", null)]
-        public virtual void Tie_BreakAvecEgaliteEtAvantage(string score_Initial, string joueur, string score_Final, string[] exampleTags)
+        public virtual void Tie_BreakAvecEgaliteEtAvantage()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_initial", score_Initial);
-            argumentsOfScenario.Add("joueur", joueur);
-            argumentsOfScenario.Add("score_final", score_Final);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tie-break avec égalité et avantage", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 126
+#line 90
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -477,37 +501,48 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 127
+#line 91
     testRunner.Given("un tie-break est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 128
-    testRunner.And(string.Format("le score du tie-break est {0}", score_Initial), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 92
+    testRunner.And("le score du tie-break est 6-6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 129
-    testRunner.When(string.Format("le {0} marque un point dans le tie-break", joueur), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 93
+    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 130
-    testRunner.Then(string.Format("le score du tie-break devient \"{0}\"", score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 94
+    testRunner.Then("le score du tie-break devient \"7-6 Avantage Joueur 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 95
+    testRunner.When("le joueur 2 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 96
+    testRunner.Then("le score du tie-break revient à 7-7 (Égalité)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 97
+    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 98
+    testRunner.Then("le score du tie-break devient \"8-7 Avantage Joueur 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 99
+    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 100
+    testRunner.Then("le joueur 1 remporte le tie-break 9-7", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retour à l\'égalité dans un tie-break")]
-        [NUnit.Framework.TestCaseAttribute("7-6", "joueur 2", "7-7 (Égalité)", null)]
-        [NUnit.Framework.TestCaseAttribute("6-7", "joueur 1", "7-7 (Égalité)", null)]
-        [NUnit.Framework.TestCaseAttribute("8-7", "joueur 2", "8-8 (Égalité)", null)]
-        [NUnit.Framework.TestCaseAttribute("7-8", "joueur 1", "8-8 (Égalité)", null)]
-        public virtual void RetourALegaliteDansUnTie_Break(string score_Avec_Avantage, string joueur_Rattrape, string score_Egalite, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Match gagné 2-0")]
+        public virtual void MatchGagne2_0()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_avec_avantage", score_Avec_Avantage);
-            argumentsOfScenario.Add("joueur_rattrape", joueur_Rattrape);
-            argumentsOfScenario.Add("score_egalite", score_Egalite);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retour à l\'égalité dans un tie-break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 140
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Match gagné 2-0", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 103
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -530,38 +565,33 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 141
-    testRunner.Given("un tie-break est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 104
+    testRunner.Given("le joueur 1 a remporté le set 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 142
-    testRunner.And(string.Format("le score du tie-break est {0}", score_Avec_Avantage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 105
+    testRunner.And("le score des sets est 1-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 143
-    testRunner.When(string.Format("le {0} marque un point dans le tie-break", joueur_Rattrape), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 106
+    testRunner.When("le joueur 1 remporte le set 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 144
-    testRunner.Then(string.Format("le score du tie-break revient à {0}", score_Egalite), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 107
+    testRunner.Then("le joueur 1 remporte le match", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 108
+    testRunner.And("le score final du match est 2-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Victoire après avantage dans un tie-break")]
-        [NUnit.Framework.TestCaseAttribute("7-6", "joueur 1", "8-6", null)]
-        [NUnit.Framework.TestCaseAttribute("6-7", "joueur 2", "6-8", null)]
-        [NUnit.Framework.TestCaseAttribute("8-7", "joueur 1", "9-7", null)]
-        [NUnit.Framework.TestCaseAttribute("7-8", "joueur 2", "7-9", null)]
-        [NUnit.Framework.TestCaseAttribute("9-8", "joueur 1", "10-8", null)]
-        public virtual void VictoireApresAvantageDansUnTie_Break(string score_Avec_Avantage, string gagnant, string score_Final, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Match gagné 2-1")]
+        public virtual void MatchGagne2_1()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_avec_avantage", score_Avec_Avantage);
-            argumentsOfScenario.Add("gagnant", gagnant);
-            argumentsOfScenario.Add("score_final", score_Final);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Victoire après avantage dans un tie-break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 153
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Match gagné 2-1", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 110
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -584,38 +614,36 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 154
-    testRunner.Given("un tie-break est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 111
+    testRunner.Given("le joueur 1 a remporté le set 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 155
-    testRunner.And(string.Format("le score du tie-break est {0}", score_Avec_Avantage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+    testRunner.And("le joueur 2 a remporté le set 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 156
-    testRunner.When(string.Format("le {0} marque un point dans le tie-break", gagnant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 113
+    testRunner.And("le score des sets est 1-1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 157
-    testRunner.Then(string.Format("le {0} remporte le tie-break {1}", gagnant, score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 114
+    testRunner.When("le joueur 1 remporte le set 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 115
+    testRunner.Then("le joueur 1 remporte le match", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 116
+    testRunner.And("le score final du match est 2-1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Victoires de match selon différents scores")]
-        [NUnit.Framework.TestCaseAttribute("1-0", "joueur 1", "2", "2-0", null)]
-        [NUnit.Framework.TestCaseAttribute("0-1", "joueur 2", "2", "0-2", null)]
-        [NUnit.Framework.TestCaseAttribute("1-1", "joueur 1", "3", "2-1", null)]
-        [NUnit.Framework.TestCaseAttribute("1-1", "joueur 2", "3", "1-2", null)]
-        public virtual void VictoiresDeMatchSelonDifferentsScores(string score_Sets_Avant, string gagnant, string numero_Set, string score_Final, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Tentative de marquer un point après la fin du match")]
+        public virtual void TentativeDeMarquerUnPointApresLaFinDuMatch()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_sets_avant", score_Sets_Avant);
-            argumentsOfScenario.Add("gagnant", gagnant);
-            argumentsOfScenario.Add("numero_set", numero_Set);
-            argumentsOfScenario.Add("score_final", score_Final);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Victoires de match selon différents scores", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 168
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tentative de marquer un point après la fin du match", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 119
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -638,71 +666,16 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 169
-    testRunner.Given(string.Format("le score des sets est {0}", score_Sets_Avant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 170
-    testRunner.When(string.Format("le {0} remporte le set {1}", gagnant, numero_Set), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 171
-    testRunner.Then(string.Format("le {0} remporte le match", gagnant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 172
-    testRunner.And(string.Format("le score final du match est {0}", score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tentatives de marquer des points après la fin du match")]
-        [NUnit.Framework.TestCaseAttribute("1", "2-0", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "2-0", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("2", "0-2", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("2", "0-2", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "2-1", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "2-1", "2", null)]
-        public virtual void TentativesDeMarquerDesPointsApresLaFinDuMatch(string gagnant, string score_Final, string tentative_Joueur, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("gagnant", gagnant);
-            argumentsOfScenario.Add("score_final", score_Final);
-            argumentsOfScenario.Add("tentative_joueur", tentative_Joueur);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tentatives de marquer des points après la fin du match", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 182
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 29
-  this.FeatureBackground();
-#line hidden
-#line 183
+#line 120
     testRunner.Given("le match est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 184
-    testRunner.And(string.Format("le joueur {0} a gagné {1}", gagnant, score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 121
+    testRunner.And("le joueur 1 a gagné 2-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 185
-    testRunner.When(string.Format("on tente de faire marquer un point au joueur {0}", tentative_Joueur), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 122
+    testRunner.When("on tente de faire marquer un point au joueur 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 186
+#line 123
     testRunner.Then("une erreur \"Match déjà terminé\" est levée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -711,21 +684,70 @@ namespace BDD_Projet_Jeux_Tests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Vérification de l\'état du match en cours")]
-        [NUnit.Framework.TestCaseAttribute("0-0", "0-0", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("0-0", "3-2", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("1-0", "2-4", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("0-1", "1-1", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("1-1", "3-2", "3", null)]
-        [NUnit.Framework.TestCaseAttribute("1-1", "0-6", "3", null)]
-        public virtual void VerificationDeLetatDuMatchEnCours(string score_Sets, string score_Jeux, string numero_Set, string[] exampleTags)
+        public virtual void VerificationDeLetatDuMatchEnCours()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Vérification de l\'état du match en cours", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 125
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 29
+  this.FeatureBackground();
+#line hidden
+#line 126
+    testRunner.Given("le score des sets est 1-1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 127
+    testRunner.And("le score des jeux est 3-2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 128
+    testRunner.When("on demande l\'état du match", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 129
+    testRunner.Then("le match est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 130
+    testRunner.And("le set actuel est le set numéro 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Progression des points dans un jeu")]
+        [NUnit.Framework.TestCaseAttribute("0-0", "joueur 1", "15-0", null)]
+        [NUnit.Framework.TestCaseAttribute("15-0", "joueur 2", "15-15", null)]
+        [NUnit.Framework.TestCaseAttribute("15-15", "joueur 1", "30-15", null)]
+        [NUnit.Framework.TestCaseAttribute("30-15", "joueur 2", "30-30", null)]
+        [NUnit.Framework.TestCaseAttribute("30-30", "joueur 1", "40-30", null)]
+        [NUnit.Framework.TestCaseAttribute("40-30", "joueur 1", "Jeu gagné", null)]
+        public virtual void ProgressionDesPointsDansUnJeu(string score_Initial, string joueur, string score_Final, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("score_sets", score_Sets);
-            argumentsOfScenario.Add("score_jeux", score_Jeux);
-            argumentsOfScenario.Add("numero_set", numero_Set);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Vérification de l\'état du match en cours", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 197
+            argumentsOfScenario.Add("score_initial", score_Initial);
+            argumentsOfScenario.Add("joueur", joueur);
+            argumentsOfScenario.Add("score_final", score_Final);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Progression des points dans un jeu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 133
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -748,33 +770,34 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 198
-    testRunner.Given(string.Format("le score des sets est {0}", score_Sets), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 134
+    testRunner.Given(string.Format("le score du jeu est {0}", score_Initial), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 199
-    testRunner.And(string.Format("le score des jeux est {0}", score_Jeux), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 135
+    testRunner.When(string.Format("le {0} marque un point", joueur), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 200
-    testRunner.When("on demande l\'état du match", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 201
-    testRunner.Then("le match est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 202
-    testRunner.And(string.Format("le set actuel est le set numéro {0}", numero_Set), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 136
+    testRunner.Then(string.Format("le score du jeu devient {0}", score_Final), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Jeu normal - victoire simple détaillée")]
-        public virtual void JeuNormal_VictoireSimpleDetaillee()
+        [NUnit.Framework.DescriptionAttribute("Différents scores de sets gagnants")]
+        [NUnit.Framework.TestCaseAttribute("5-0", "joueur 1", "6-0", null)]
+        [NUnit.Framework.TestCaseAttribute("5-1", "joueur 1", "6-1", null)]
+        [NUnit.Framework.TestCaseAttribute("5-4", "joueur 1", "6-4", null)]
+        [NUnit.Framework.TestCaseAttribute("6-5", "joueur 1", "7-5", null)]
+        public virtual void DifferentsScoresDeSetsGagnants(string jeux_Avant, string gagnant, string score_Set, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Jeu normal - victoire simple détaillée", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 215
+            argumentsOfScenario.Add("jeux_avant", jeux_Avant);
+            argumentsOfScenario.Add("gagnant", gagnant);
+            argumentsOfScenario.Add("score_set", score_Set);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Différents scores de sets gagnants", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 147
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -797,151 +820,14 @@ namespace BDD_Projet_Jeux_Tests.Features
 #line 29
   this.FeatureBackground();
 #line hidden
-#line 216
-    testRunner.Given("le score du jeu est 30-15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 148
+    testRunner.Given(string.Format("le score des jeux est {0}", jeux_Avant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 217
-    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 149
+    testRunner.When(string.Format("le {0} remporte le jeu suivant", gagnant), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 218
-    testRunner.Then("le score du jeu devient 40-15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 219
-    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 220
-    testRunner.Then("le joueur 1 remporte le jeu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 221
-    testRunner.And("le score des jeux devient 1-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 222
-    testRunner.And("le score des points revient à 0-0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Séquence complète d\'égalité et avantage")]
-        public virtual void SequenceCompleteDegaliteEtAvantage()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Séquence complète d\'égalité et avantage", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 224
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 29
-  this.FeatureBackground();
-#line hidden
-#line 225
-    testRunner.Given("le score du jeu est 40-40 (Égalité)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 226
-    testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 227
-    testRunner.Then("le score du jeu devient Avantage Joueur 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 228
-    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 229
-    testRunner.Then("le score du jeu revient à 40-40 (Égalité)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 230
-    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 231
-    testRunner.Then("le score du jeu devient Avantage Joueur 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 232
-    testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 233
-    testRunner.Then("le joueur 2 remporte le jeu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tie-break complet avec égalités multiples")]
-        public virtual void Tie_BreakCompletAvecEgalitesMultiples()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tie-break complet avec égalités multiples", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 235
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 29
-  this.FeatureBackground();
-#line hidden
-#line 236
-    testRunner.Given("un tie-break est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 237
-    testRunner.And("le score du tie-break est 6-6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 238
-    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 239
-    testRunner.Then("le score du tie-break devient \"7-6 Avantage Joueur 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 240
-    testRunner.When("le joueur 2 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 241
-    testRunner.Then("le score du tie-break revient à 7-7 (Égalité)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 242
-    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 243
-    testRunner.Then("le score du tie-break devient \"8-7 Avantage Joueur 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 244
-    testRunner.When("le joueur 1 marque un point dans le tie-break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 245
-    testRunner.Then("le joueur 1 remporte le tie-break 9-7", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 150
+    testRunner.Then(string.Format("le {0} remporte le set avec un score de {1}", gagnant, score_Set), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

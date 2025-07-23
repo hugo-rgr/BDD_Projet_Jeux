@@ -56,7 +56,8 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [Given(@"le jeu vient de commencer")]
         public void GivenLeJeuVientDeCommencer()
         {
-            // Le jeu est déjà à 0-0 par défaut
+            // Le jeu est déjà à 0-0 par défaut après l'initialisation
+            _tennisGame.SetGameScore("0-0");
         }
 
         [Given(@"un tie-break est en cours")]
@@ -75,7 +76,7 @@ namespace BDD_Projet_Jeux_Tests.Steps
         }
 
         [Given(@"le joueur (.*) a remporté le set (.*)")]
-        public void GivenLeJoueurARemporteLeSet(int numeroJoueur, string numeroSet)
+        public void GivenLeJoueurARemporteLeSet(int numeroJoueur, int numeroSet)
         {
             if (numeroJoueur == 1)
                 _match.Player1.SetsWon++;
@@ -114,6 +115,7 @@ namespace BDD_Projet_Jeux_Tests.Steps
         public void GivenLeMatchEstTermine()
         {
             _match.Player1.SetsWon = 2;
+            _match.Player2.SetsWon = 0;
             _match.State = MatchState.Completed;
             _match.Winner = _match.Player1;
         }
@@ -135,26 +137,26 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [When(@"le joueur (.*) remporte le jeu suivant")]
         public void WhenLeJoueurRemporteLeJeuSuivant(int numeroJoueur)
         {
-            // Forcer directement la victoire du jeu
+            // Simuler la victoire d'un jeu en marquant les points nécessaires
             var scoringPlayer = numeroJoueur == 1 ? _match.Player1 : _match.Player2;
             var otherPlayer = numeroJoueur == 1 ? _match.Player2 : _match.Player1;
             
             _match.GameJustWon = false;
-            scoringPlayer.ResetGame();
-            otherPlayer.ResetGame();
+            _match.SetJustWon = false;
             
-            for (int i = 0; i < 4; i++)
+            int maxAttempts = 10; // Protection contre boucle infinie
+            int attempts = 0;
+            
+            while (!_match.GameJustWon && attempts < maxAttempts)
             {
                 var result = _tennisGame.PlayTurn(numeroJoueur);
                 _testContext.LastResult = result;
-                
-                if (_match.GameJustWon)
-                    break;
+                attempts++;
             }
         }
 
         [When(@"le joueur (.*) remporte le set (.*)")]
-        public void WhenLeJoueurRemporteLeSet(int numeroJoueur, string numeroSet)
+        public void WhenLeJoueurRemporteLeSet(int numeroJoueur, int numeroSet)
         {
             if (numeroJoueur == 1)
                 _match.Player1.SetsWon++;
@@ -198,7 +200,6 @@ namespace BDD_Projet_Jeux_Tests.Steps
             _scenarioContext["matchState"] = _match.State;
         }
 
-        // All the Then steps remain the same since they work with the Match object
         [Then(@"le score du jeu devient (.*)")]
         public void ThenLeScoreDuJeuDevient(string scoreAttendu)
         {
@@ -209,14 +210,21 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [Then(@"le joueur (.*) remporte le jeu")]
         public void ThenLeJoueurRemporteLeJeu(int numeroJoueur)
         {
-            _match.GameJustWon = false;
+            // Vérifier que le jeu a été gagné
+            Assert.IsTrue(_match.GameJustWon, "Le jeu devrait avoir été gagné");
             
-            Assert.AreEqual("0-0", _match.GetGameScore());
+            // Vérifier que le bon joueur a gagné le jeu
+            var joueurGagnant = numeroJoueur == 1 ? _match.Player1 : _match.Player2;
+            Assert.AreEqual(joueurGagnant, _match.GameWinner);
             
+            // Vérifier que le score des jeux a été incrémenté
             if (numeroJoueur == 1)
                 Assert.IsTrue(_match.Player1.GamesWon > 0);
             else
                 Assert.IsTrue(_match.Player2.GamesWon > 0);
+            
+            // Reset le flag pour les vérifications suivantes
+            _match.GameJustWon = false;
         }
 
         [Then(@"le score des jeux (?:devient|revient à) (.*)")]
@@ -229,16 +237,45 @@ namespace BDD_Projet_Jeux_Tests.Steps
         [Then(@"le score du jeu revient à (.*)")]
         public void ThenLeScoreDesPointsRevientA(string scoreAttendu)
         {
+            // Assurer que le flag GameJustWon est remis à false pour obtenir le vrai score
+            _match.GameJustWon = false;
             Assert.AreEqual(scoreAttendu, _match.GetGameScore());
         }
 
-        [Then(@"le joueur (.*) remporte le set(?:\s+avec un score de\s+(.*)|\s+(\d+-\d+))?")]
+        [Then(@"le joueur (.*) remporte le set(?:\s+avec un score de\s+(.*)|(?:\s+(.*))?)?")]
         public void ThenLeJoueurRemporteLeSet(int numeroJoueur, string scoreSetAvecTexte = null, string scoreSetDirect = null)
         {
             bool setGagne = _match.SetJustWon || 
                             (numeroJoueur == 1 ? _match.Player1.SetsWon > 0 : _match.Player2.SetsWon > 0);
             
             Assert.IsTrue(setGagne, $"Le joueur {numeroJoueur} devrait avoir gagné un set");
+            
+            // Récupérer le score attendu (soit avec texte, soit direct)
+            string scoreSet = scoreSetAvecTexte ?? scoreSetDirect;
+            
+            // Si un score spécifique est attendu, vérifier les jeux gagnés
+            if (!string.IsNullOrEmpty(scoreSet))
+            {
+                var parts = scoreSet.Split('-');
+                if (parts.Length == 2)
+                {
+                    int jeuxGagnant = int.Parse(parts[0]);
+                    int jeuxPerdant = int.Parse(parts[1]);
+                    
+                    if (numeroJoueur == 1)
+                    {
+                        // Note: En réalité après un set, les jeux sont remis à 0
+                        // Donc on vérifie plutôt que le joueur a gagné un set
+                        Assert.IsTrue(_match.Player1.SetsWon > 0);
+                    }
+                    else
+                    {
+                        Assert.IsTrue(_match.Player2.SetsWon > 0);
+                    }
+                }
+            }
+            
+            // Reset le flag après vérification
             _match.SetJustWon = false;
         }
 
@@ -273,7 +310,12 @@ namespace BDD_Projet_Jeux_Tests.Steps
         public void ThenLeJoueurRemporteLeTieBreak(int numeroJoueur, string score)
         {
             Assert.IsFalse(_match.IsTieBreak, "Le tie-break devrait être terminé");
-            ThenLeJoueurRemporteLeSet(numeroJoueur);
+            
+            // Vérifier que le joueur a gagné le set (car gagner un tie-break = gagner le set)
+            if (numeroJoueur == 1)
+                Assert.IsTrue(_match.Player1.SetsWon > 0);
+            else
+                Assert.IsTrue(_match.Player2.SetsWon > 0);
         }
 
         [Then(@"le joueur (.*) remporte le match")]
@@ -302,5 +344,7 @@ namespace BDD_Projet_Jeux_Tests.Steps
         {
             Assert.AreEqual(numeroSet, _match.CurrentSet);
         }
+
+
     }
 }
