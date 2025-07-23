@@ -20,6 +20,25 @@
     </ItemGroup>
 
     <ItemGroup>
+      <UpToDateCheckInput Remove="Features\Mastermind\CodeBreaking.feature" />
+      <UpToDateCheckInput Remove="Features\Mastermind\FeedbackSystem.feature" />
+      <UpToDateCheckInput Remove="Features\Flechettes\GameInitialization.feature" />
+      <UpToDateCheckInput Remove="Features\Flechettes\Scoring.feature" />
+      <UpToDateCheckInput Remove="Features\Bowling\FrameScoring.feature" />
+      <UpToDateCheckInput Remove="Features\Bowling\SpecialCases.feature" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckBuild Remove="Features\Mastermind\CodeBreaking.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Mastermind\FeedbackSystem.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Flechettes\GameInitialization.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Flechettes\Scoring.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Bowling\FrameScoring.feature.cs" />
+      <UpToDateCheckBuild Remove="Features\Bowling\SpecialCases.feature.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+
       <ProjectReference Include="..\BDD_Projet_Jeux\BDD_Projet_Jeux.csproj" />
     </ItemGroup>
 
