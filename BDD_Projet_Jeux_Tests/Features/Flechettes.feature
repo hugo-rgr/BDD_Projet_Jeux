@@ -46,3 +46,35 @@ Tests couvrant toutes les règles du jeu 501 points
     Quand le joueur 1 marque -5 points
     Alors le système doit rejeter le score
     Et afficher "Score invalide"
+
+    # Cas supplémentaires
+    Scenario: Victoire pile à 0
+    Etant donné le joueur 1 a 10 points restants
+    Quand il marque 10 points
+    Alors la partie doit être terminée
+    Et le joueur 1 doit être déclaré vainqueur
+
+    Scenario: Score qui dépasse 0
+    Etant donné le joueur 1 a 5 points restants
+    Quand il marque 6 points
+    Alors son score doit rester à 5
+    Et le tour doit passer au joueur 2
+
+    Scenario: Score de 0 dès le début
+    Etant donné le joueur 1 a 0 points restants
+    Alors la partie doit être terminée
+    Et le joueur 1 doit être déclaré vainqueur
+
+    Scenario: Règle "fin sur double" non respectée
+    Etant donné une partie avec la règle "Fin sur double"
+    Et le joueur 1 a 20 points restants
+    Quand il marque 20 points (simple)
+    Alors son score doit rester à 20
+    Et la partie ne doit pas être terminée
+
+    Scenario: Partie à 3 joueurs
+    Etant donné une nouvelle partie de fléchettes avec 3 joueurs
+    Quand le joueur 1 marque 100 points
+    Et le joueur 2 marque 150 points
+    Et le joueur 3 marque 200 points
+    Alors le tour doit passer au joueur 1

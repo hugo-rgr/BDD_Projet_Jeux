@@ -49,6 +49,31 @@ public class BowlingSteps
         }
     }
 
+    [When(@"le joueur (\d+) fait (\d+) lancers de (\d+)")]
+    public void PlayerRollsMultiple(int playerNumber, int count, int pins)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            PlayerRolls(playerNumber, pins);
+            if (_lastResult.IsGameOver) break;
+        }
+    }
+
+    [When(@"il fait (\d+) puis (\d+)")]
+    public void PlayerRollsSequence(int first, int second)
+    {
+        var player = _game.GetCurrentState().CurrentPlayer;
+        PlayerRolls(int.Parse(player.Split(' ')[1]), first);
+        PlayerRolls(int.Parse(player.Split(' ')[1]), second);
+    }
+
+    [When(@"il fait (\d+)")]
+    public void PlayerRollsSingle(int pins)
+    {
+        var player = _game.GetCurrentState().CurrentPlayer;
+        PlayerRolls(int.Parse(player.Split(' ')[1]), pins);
+    }
+
     [Then(@"son score pour ce frame doit être (\d+)")]
     public void VerifyFrameScore(int expectedScore)
     {
@@ -76,5 +101,24 @@ public class BowlingSteps
     public void VerifyInvalidRoll()
     {
         _lastResult.IsValid.Should().BeFalse();
+    }
+
+    [Then(@"le prochain joueur doit être le joueur (\d+)")]
+    public void VerifyNextPlayer(int playerNumber)
+    {
+        _game.GetCurrentState().CurrentPlayer.Should().Be($"Joueur {playerNumber}");
+    }
+
+    [Then(@"afficher ""([^\""]*)""")]
+    public void VerifyErrorMessage(string expectedMessage)
+    {
+        if (_testContext.LastException != null)
+        {
+            _testContext.LastException.Message.Should().Be(expectedMessage);
+        }
+        else
+        {
+            _lastResult.Message.Should().Be(expectedMessage);
+        }
     }
 }

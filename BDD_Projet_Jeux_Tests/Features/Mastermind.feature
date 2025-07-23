@@ -43,3 +43,51 @@ Tests couvrant toutes les mécaniques du jeu
     | YOOO        |
     Alors la partie doit être terminée
     Et le créateur du code doit gagner
+
+    # Cas supplémentaires
+    Scenario: Proposition avec caractères interdits
+    Quand je propose "R@BY"
+    Alors le système doit rejeter la tentative
+    Et afficher "Couleurs valides: R,G,B,Y,O,P"
+
+    Scenario: Proposition avec doublons valides
+    Quand je propose "RRGG"
+    Alors je devrais recevoir "2 pions bien placés, 2 couleurs correctes"
+
+    Scenario: Victoire au dernier essai
+    Quand j'effectue 9 propositions incorrectes:
+    | Proposition |
+    | OOOO        |
+    | PPPP        |
+    | RRRR        |
+    | GGGG        |
+    | BBBB        |
+    | YYYY        |
+    | ROOO        |
+    | GOOO        |
+    | BOOO        |
+    Et je propose "RGBY"
+    Alors la partie doit être terminée
+    Et je devrais être déclaré vainqueur
+
+    Scenario: Partie déjà terminée
+    Quand j'effectue 10 propositions incorrectes:
+    | Proposition |
+    | OOOO        |
+    | PPPP        |
+    | RRRR        |
+    | GGGG        |
+    | BBBB        |
+    | YYYY        |
+    | ROOO        |
+    | GOOO        |
+    | BOOO        |
+    | YOOO        |
+    Et je propose "RGBY"
+    Alors le système doit rejeter la tentative
+    Et afficher "Partie terminée"
+
+    Scenario: Code secret avec doublons
+    Etant donné une nouvelle partie de Mastermind avec le code secret "RRGG"
+    Quand je propose "RGRG"
+    Alors je devrais recevoir "2 pions bien placés, 2 couleurs correctes"

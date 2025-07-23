@@ -58,6 +58,20 @@ public class FlechettesSteps
         }
     }
 
+    [When(@"le joueur (\d+) marque (\d+) points \(simple\)")]
+    public void PlayerScoresSimple(int playerNumber, int points)
+    {
+        PlayerScores(playerNumber, points);
+    }
+
+    [When(@"le joueur (\d+) marque (\d+) points \(double\)")]
+    public void PlayerScoresDouble(int playerNumber, int points)
+    {
+        // Simule un lancer double (pour la règle fin sur double)
+        // Ici, on suppose que la logique du jeu gère la différence
+        PlayerScores(playerNumber, points * 2);
+    }
+
     [Then(@"son score doit être (\d+)")]
     public void VerifyScore(int expectedScore)
     {
@@ -94,5 +108,17 @@ public class FlechettesSteps
     {
         var winner = _lastResult.Winner;
         _currentState.Players[winner].Should().Be(expectedScore);
+    }
+
+    [Then(@"la partie ne doit pas être terminée")]
+    public void VerifyGameNotOver()
+    {
+        _lastResult.IsGameOver.Should().BeFalse();
+    }
+
+    [Then(@"afficher ""([^\""]*)""")]
+    public void VerifyErrorMessage(string expectedMessage)
+    {
+        _lastResult.Message.Should().Be(expectedMessage);
     }
 }
